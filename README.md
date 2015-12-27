@@ -1,4 +1,4 @@
-# sicp
-Sicp in clojure, with devcards
+# Sicp in clojure, with devcards
 
 @TODO
+

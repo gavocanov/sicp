@@ -1,4 +1,5 @@
 target/
 figwheel_server.log
 resources/public/js/
+Session.vim
 

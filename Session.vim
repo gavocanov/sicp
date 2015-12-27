@@ -10,12 +10,13 @@ endif
 set shortmess=aoO
 badd +11 project.clj
 badd +22 src/sicp/core.cljs
-badd +11 src/sicp/chapter1.cljs
+badd +13 src/sicp/chapter1.cljs
 badd +4 .gitignore
+badd +4 README.md
 argglobal
 silent! argdel *
 argadd project.clj
-edit src/sicp/chapter1.cljs
+edit .gitignore
 set splitbelow splitright
 wincmd t
 set winheight=1 winwidth=1
@@ -29,11 +30,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 13 - ((12 * winheight(0) + 45) / 91)
+let s:l = 5 - ((4 * winheight(0) + 45) / 91)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-13
+5
 normal! 0
 lcd ~/Sources/cljs/sicp
 tabnext 1
