@@ -1,4 +1,3 @@
 # Sicp in clojure, with devcards
 
-@TODO
-
+@TODO `write some basic desc`
