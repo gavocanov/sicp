@@ -1,3 +1,4 @@
+;;;; vim:fdm=marker
 (ns sicp.gcd
   (:require
    [reagent.core :as r]
@@ -5,8 +6,6 @@
   (:require-macros
    [devcards.core :as dc :refer [defcard defcard-doc defcard-rg deftest mkdn-pprint-source]]
    [cljs.test :refer [testing is]]))
-
-(enable-console-print!)
 
 ;; GCD
 (defcard-doc
@@ -17,8 +16,4 @@
 (deftest gcd-test
   (testing "gcd of 28 and 16 should be 4"
     (is (= (c1/gcd 28 16) 4))))
-
-;; remember to run lein figwheel and then browse to
-;; http://localhost:3449/cards.html
-
 

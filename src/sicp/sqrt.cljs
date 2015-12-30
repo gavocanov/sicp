@@ -1,3 +1,4 @@
+;;;; vim:fdm=marker
 (ns sicp.sqrt
   (:require
    [reagent.core :as r]
@@ -5,8 +6,6 @@
   (:require-macros
    [devcards.core :as dc :refer [defcard defcard-doc defcard-rg deftest mkdn-pprint-source]]
    [cljs.test :refer [testing is]]))
-
-(enable-console-print!)
 
 ;; SQRT
 (defcard-doc
