@@ -8,9 +8,9 @@
   "absolute value of 'x'"
   [x]
   (cond
-   (< x 0) (- x)
+   (neg? x) (- x)
    (zero? x) 0
-   (> x 0) x))
+   (pos? x) x))
 (comment
  (u/log "abs -10: " (abs -10)))
 ;; abs }}}
@@ -121,3 +121,15 @@
 (comment
  (u/log "prime? 2: " (prime? 2)))
 ;; prime? }}}
+
+;; expmod {{{
+(defn expmod
+  "compute the exponential of a number modulo anothe number"
+  [base exp m]
+  (cond
+   (zero? exp) 1
+   (even? exp) (rem (square (expmod base (/ exp 2) m)) m)
+   :else (rem (* base (expmod base (dec exp) m)) m)))
+(comment
+ (u/log "expmod base 4, exp 13, m 497: " (expmod 4 13 497)))
+;; expmod }}}

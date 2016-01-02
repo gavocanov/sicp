@@ -12,7 +12,7 @@
   "function `abs`"
   (mkdn-pprint-source c1/abs))
 (defcard-rg abs
-  [:div>pre "abs [-1 0 1] -> " (str (into [] (map c1/abs [-1 0 1])))])
+  [:div>pre "abs [-1 0 1] -> " (str (vec (map c1/abs [-1 0 1])))])
 (deftest abs-test
   (testing "should return absolute value for numbers:"
     (is (= (c1/abs 1) 1))

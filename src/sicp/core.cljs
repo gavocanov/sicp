@@ -6,7 +6,8 @@
    [sicp.factorial]
    [sicp.fib]
    [sicp.gcd]
-   [sicp.smallest-divisor]))
+   [sicp.smallest-divisor]
+   [sicp.expmod]))
 
 ;; THIS IS JUST A PLACEHODER NAMESPACE
 ;; for devcards to include all sources and display a menu of all devcards
