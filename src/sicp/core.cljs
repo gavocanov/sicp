@@ -8,7 +8,8 @@
    [sicp.gcd]
    [sicp.smallest-divisor]
    [sicp.expmod]
-   [sicp.fermat-test]))
+   [sicp.fermat-test]
+   [sicp.fast-prime]))
 
 ;; THIS IS JUST A PLACEHODER NAMESPACE
 ;; for devcards to include all sources and display a menu of all devcards

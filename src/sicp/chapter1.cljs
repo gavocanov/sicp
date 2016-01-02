@@ -142,5 +142,43 @@
             (= (expmod a n n) a))]
     (try-it (inc (rand-int (dec n))))))
 (comment
- (u/log "fermat-test 221: " (fermat-test 2400)))
+ (u/log "fermat-test 223: " (fermat-test 223)))
 ;; fermat-test }}}
+
+;; fast-prime? {{{
+(defn fast-prime?
+  "Try the fermat test for 'n' 'times' times"
+  [n times]
+  (cond
+   (zero? times) true
+   (fermat-test n) (recur n (dec times))
+   :else false))
+(comment
+ (u/log "fast-prime? 401 20: " (fast-prime? 401 20)))
+;; fast-prime }}}
+
+;; average-damp {{{
+(defn average-damp
+  "return a procedure that when applied to a number 'x' produces the average of 'x' and ('f' 'x')"
+  [f]
+  #(average % (f %)))
+(comment
+ (u/log "(average-dump square) 10: " ((average-damp square) 10)))
+;; average-damp }}}
+
+;; close-enough? {{{
+(defn close-enough?
+  "test if 'x' and 'y' are close enough (0.001)"
+  [x y]
+  (< (abs (- x y)) 0.001))
+;; close-enough? }}}
+
+;; search {{{
+(defn search
+  "")
+;; search }}}
+
+;; half-interval-method {{{
+(defn half-interval-method
+  "")
+;; half-interval-method }}}
