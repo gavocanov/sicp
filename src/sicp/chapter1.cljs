@@ -133,3 +133,14 @@
 (comment
  (u/log "expmod base 4, exp 13, m 497: " (expmod 4 13 497)))
 ;; expmod }}}
+
+;; fermat-test {{{
+(defn fermat-test
+  "Fermat test"
+  [n]
+  (letfn [(try-it [a]
+            (= (expmod a n n) a))]
+    (try-it (inc (rand-int (dec n))))))
+(comment
+ (u/log "fermat-test 221: " (fermat-test 2400)))
+;; fermat-test }}}
