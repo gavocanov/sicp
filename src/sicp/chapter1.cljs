@@ -102,8 +102,7 @@
 (defn smallest-divisor
   "return smallest divisor of 'n', that is bigger then 2"
   [n]
-  (letfn [(find-divisor
-            [n test-divisor]
+  (letfn [(find-divisor [n test-divisor]
             (cond
              (> (square test-divisor) n) n
              (divides? test-divisor n) test-divisor
