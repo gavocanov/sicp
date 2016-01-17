@@ -168,11 +168,11 @@
 ;; close-enough? {{{
 (defn close-enough?
   "test if 'x' and 'y' are close enough (0.001)"
-  [x y]
-  (< (abs (- x y)) 0.001))
+  ([x y] (close-enough? x y 0.001))
+  ([x y tolerance] (< (abs (- x y)) tolerance)))
 ;; close-enough? }}}
 
-;; search {{{
+;; search-method {{{
 (defn- search-method
   "Used internally by half-internal-method"
   [f neg-point pos-point]
@@ -186,7 +186,7 @@
          :else midpoint)))))
 (comment
  (u/log "test search -10 100: " (search-method js/Math.sin 2.0 4.0)))
-;; search }}}
+;; search-method }}}
 
 ;; half-interval-method {{{
 (defn half-interval-method
@@ -210,3 +210,24 @@
                               1.0
                               2.0)))
 ;; half-interval-method }}}
+
+;; average-dump {{{
+(defn average-dump
+  "given a function f, we consider the function whose value at x is equal to the average of x and f(x)"
+  [f]
+  #(average % (f %)))
+(comment
+ (u/log "average-dump square 10 -> " ((average-damp square) 10)))
+;; average-dump }}}
+
+;; fixed-point {{{
+(defn fixed-point
+  "return f(x) = x"
+  [f first-guess]
+  (letfn [(try-it [guess]
+            (let [next-guess (f guess)]
+              (if (close-enough? guess next-guess 0.00001)
+                next-guess
+                (try-it next-guess))))]
+    (try-it first-guess)))
+;; fixed-point }}}
