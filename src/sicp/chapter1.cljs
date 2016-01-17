@@ -173,11 +173,40 @@
 ;; close-enough? }}}
 
 ;; search {{{
-(defn search
-  "")
+(defn- search-method
+  "Used internally by half-internal-method"
+  [f neg-point pos-point]
+  (let [midpoint (average neg-point pos-point)]
+    (if (close-enough? neg-point pos-point)
+      midpoint
+      (let [test-value (f midpoint)]
+        (cond
+         (pos? test-value) (recur f neg-point midpoint)
+         (neg? test-value) (recur f midpoint pos-point)
+         :else midpoint)))))
+(comment
+ (u/log "test search -10 100: " (search-method js/Math.sin 2.0 4.0)))
 ;; search }}}
 
 ;; half-interval-method {{{
 (defn half-interval-method
-  "")
+  "Find root of equation using the half-interval method"
+  [f a b]
+  (let [a-value (f a)
+        b-value (f b)]
+    (cond
+     (and
+      (neg? a-value)
+      (pos? b-value))
+     (search-method f a b)
+     (and
+      (neg? b-value)
+      (pos? a-value))
+     (search-method f b a)
+     :else (throw "values are not of opposite signs") )))
+(comment
+ (u/log "pi as the root between 2 and 4 of sin x = 0 -> " (half-interval-method js/Math.sin 2 4))
+ (u/log (half-interval-method #(- (* % % %) (* 2 %) 3)
+                              1.0
+                              2.0)))
 ;; half-interval-method }}}
